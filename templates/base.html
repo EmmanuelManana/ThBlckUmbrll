@@ -4,9 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ThBlckUmbrlla</title>
-    {% block head %} {% endblock %}
+
 </head>
 <body>
-    {% block body %} {% endblock %}
+        <header> #pending header </header>
+        <!-- check if user is locked in-->
+        {% if logged_in  %}
+       <h1> #pending default behavior </h1>
+        <!-- if user is not logged present this login or register-->
+        {% else %}
+        <div class="loggin-card">
+            <form>
+                <label for="Username">Username</label><br />
+                <input type="text" name="Username" value="Username" alt="Username" />
+
+                <br /><label for="Password">Password</label><br />
+                <input type="text" id="Password" value="Password"/>
+
+                <a href="">Login</a>
+                <a href="">Register</a>
+            </form>
+        {% endif %}
+        </div>
 </body>
 </html>

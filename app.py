@@ -4,4 +4,4 @@ app = Flask(__name__)
 
 @app.route('/', methods=['POST', 'GET'])
 def register_user():
-    return render_template('index.html')
+    return render_template('home.html', logged_in = False)
