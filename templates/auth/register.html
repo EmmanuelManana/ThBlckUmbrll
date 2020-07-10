@@ -1,7 +1,9 @@
-{% extends 'base.html' %} {% block body %}
+{% extends 'base.html' %}
+
+{% block content %}
 <div class="form">
-  <h2>Register a account</h2>
-  <form id="form" action= "/" method="POST">
+  <h2>Register an account</h2>
+  <form id="form" action= "/" method="">
     <label for="Username">Username</label><br />
     <input type="text" name="Username" value="Username" alt="Username" />
 
@@ -22,3 +24,10 @@
   </form>
 </div>
 {% endblock %}
+
+{% block js%}
+<script>
+
+</script>
+{% endblock %}
+

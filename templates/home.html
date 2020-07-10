@@ -1,13 +1,14 @@
-{% extends 'base.html' %}
+{% extends "base.html" %} 
+{% block title %} ThBlckUmbrll {% endblock %} 
 
-{% block head %}
-
-{% endblock %}
-
-{% block body %}
-<div class="welcome-msg">
-  <h1>ThBlckUmbrlla</h1>
-  <br>
-  <h4>The Future is here</h4>
+{% block content %} 
+<div class=""></div>
+  {% if logged_in %}
+  <!-- extend basic behavior-->
+  <h1>Testing if exist</h1>
+  {% else %}
+    <a class="nav-link" href="">Login</a>
+    <a class="nav-item nav-link" href="{{ url_for('register') }}">Register</a> 
+  {% endif %}
 </div>
 {% endblock %}
