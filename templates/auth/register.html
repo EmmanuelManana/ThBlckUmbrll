@@ -3,22 +3,55 @@
 {% block content %}
 <div class="form">
   <h2>Register an account</h2>
-  <form id="form" action= "/" method="">
-    <label for="Username">Username</label><br />
-    <input type="text" name="Username" value="Username" alt="Username" />
+  <form id="form" action= "/" method="" novalidate>
+    <label for="Username">
+      <span>Username:</span>
+      <input type="text" name="Username" value="Username" alt="Username" required/>
+      <span class="error" aria-live="polite"></span>
+    </label>
+    <br />
 
-    <br /><label for="Firstname">Fisrtname</label><br />
-    <input type="text" name="Firstname" value="Fisrtname" alt="Fisrtname" />
+    <label for="Firstname">
+      <span>Firstname:</span>
+      <input type="text" name="Firstname" value="Fisrtname" alt="Fisrtname" required/>
+      <span class="error" aria-live="polite"></span>
+    </label>
+    <br />
+    
+    <label for="Lastname">
+      <span>Lastname:</span>
+      <input type="Lastname" name="Lastname" value="Lastname" alt="LastName" />
+      <span class="error" aria-live="polite"></span>
+    </label>
+    <br />
 
-    <br /><label for="Lastname">Lastname</label><br />
-    <input type="Lastname" name="Lastname" value="Lastname" alt="LastName" />
+    <label for="email">
+      <span>email:</span>
+      <input type=email id="email" value="email"/>
+      <span class="error" aria-live="polite"></span>
+    </label>
+    <br />
 
-    <br /><label for="Password">Password</label><br />
-    <input type="text" id="Password" value="Password"/>
+    <label for="confirm-email">
+      <span>confirm-email:</span>
+      <input type=email id="email-confirm" value="confirm-email" required/>
+      <span class="error" aria-live="polite"></span>
+    </label>
+    <br />
 
-    <br /><label for="Password">Confirm Password</label><br />
-    <input type="text" id="Password" value="Confirm Password"/>
-
+    <label for="Password">
+      <span>Password:</span>
+      <input type="password" id="Password" required/>
+      <span class="error" aria-live="polite"></span>
+    </label>
+    <br />
+    
+      <label for="Password">
+        <span> Confirm Password:</span>
+        <input type="password" id="Password" required/>
+        <span class="error" aria-live="polite"></span>
+      </label>
+  
     <br />
     <button type="submit" alt="Submit">Submit</button>
   </form>
@@ -27,6 +60,39 @@
 
 {% block js%}
 <script>
+  //get the first form in the page
+  const form = document.getElementsByTagName('form')[0];
+  const email = document.getElementById("email");
+  const emailError = document.querySelector('#email + span.error')
+
+  email.addEventListener("input", validateEmail(event))
+
+  validateEmail = () =>{
+   // check form validity as per the users input
+    if (email.validity.valid){
+      //if the email field is field correctly remove the error
+      emailError.innerHTML=''; // rest msg content
+      emailError.className = 'error'// reset msg visual state
+    }else{
+      //if there exist and error, show it
+      showError();
+    }
+  }
+
+  submitform = (event) =>{
+    // if the email field is valid, we let the form submit
+  if(!email.validity.valid) {
+    // If it isn't, we display an appropriate error message
+    showError();
+    // Then we prevent the form from being sent by canceling the event
+    event.preventDefault(); // prevent the default behavior  of the form.
+  }
+  }
+
+  showError = () =>{
+
+  }
+ 
 
 </script>
 {% endblock %}
