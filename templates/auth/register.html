@@ -1,23 +1,33 @@
-{% extends 'base.html' %}
-
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 <div class="form">
   <h2>Register an account</h2>
-  <form id="form" action= "/" method="" novalidate>
+  <form id="form" method="POST" novalidate>
     <label for="Username">
       <span>Username:</span>
-      <input type="text" name="Username" value="Username" alt="Username" required/>
+      <input
+        type="text"
+        name="Username"
+        value="Username"
+        alt="Username"
+        required
+      />
       <span class="error" aria-live="polite"></span>
     </label>
     <br />
 
     <label for="Firstname">
       <span>Firstname:</span>
-      <input type="text" name="Firstname" value="Fisrtname" alt="Fisrtname" required/>
+      <input
+        type="text"
+        name="Firstname"
+        value="Fisrtname"
+        alt="Fisrtname"
+        required
+      />
       <span class="error" aria-live="polite"></span>
     </label>
     <br />
-    
+
     <label for="Lastname">
       <span>Lastname:</span>
       <input type="Lastname" name="Lastname" value="Lastname" alt="LastName" />
@@ -27,73 +37,75 @@
 
     <label for="email">
       <span>email:</span>
-      <input type=email id="email" value="email"/>
+      <input type="email" id="email" aria-multiline="6" />
       <span class="error" aria-live="polite"></span>
     </label>
     <br />
 
     <label for="confirm-email">
       <span>confirm-email:</span>
-      <input type=email id="email-confirm" value="confirm-email" required/>
+      <input type="email" id="email-confirm" required />
       <span class="error" aria-live="polite"></span>
     </label>
     <br />
 
     <label for="Password">
       <span>Password:</span>
-      <input type="password" id="Password" required/>
+      <input type="password" id="Password" required />
       <span class="error" aria-live="polite"></span>
     </label>
     <br />
-    
-      <label for="Password">
-        <span> Confirm Password:</span>
-        <input type="password" id="Password" required/>
-        <span class="error" aria-live="polite"></span>
-      </label>
-  
+
+    <label for="Password">
+      <span> Confirm Password:</span>
+      <input type="password" id="Password" required />
+      <span class="error" aria-live="polite"></span>
+    </label>
+
     <br />
     <button type="submit" alt="Submit">Submit</button>
   </form>
 </div>
-{% endblock %}
-
-{% block js%}
+{% endblock %} {% block js%}
 <script>
   //get the first form in the page
-  const form = document.getElementsByTagName('form')[0];
+  const form = document.getElementsByTagName("form")[0];
   const email = document.getElementById("email");
-  const emailError = document.querySelector('#email + span.error')
+  const emailError = document.querySelector("#email + span.error");
 
-  email.addEventListener("input", validateEmail(event))
-
-  validateEmail = () =>{
-   // check form validity as per the users input
-    if (email.validity.valid){
+  email.addEventListener("input",  validateEmail = () => {
+    // check form validity as per the users input
+    if (email.validity.valid) {
       //if the email field is field correctly remove the error
-      emailError.innerHTML=''; // rest msg content
-      emailError.className = 'error'// reset msg visual state
-    }else{
+      emailError.innerHTML = ""; // rest msg content
+      emailError.className = "error"; // reset msg visual state
+    } else {
       //if there exist and error, show it
       showError();
     }
-  }
+  })
+  form.addEventListener("submit", submitform = () => {
+      // if the email field is valid, we let the form submit
+      if (!email.validity.valid) {
+        // If it isn't, we display an appropriate error message
+        showError();
+        // Then we prevent the form from being sent by canceling the event
+        event.preventDefault(); // prevent the default behavior  of the form.(that is submittng if you dont know1)
+      }
+  });
 
-  submitform = (event) =>{
-    // if the email field is valid, we let the form submit
-  if(!email.validity.valid) {
-    // If it isn't, we display an appropriate error message
-    showError();
-    // Then we prevent the form from being sent by canceling the event
-    event.preventDefault(); // prevent the default behavior  of the form.
-  }
-  }
-
-  showError = () =>{
-
-  }
- 
+  // handle varying invalid-inputs accordingly
+  showError = () => {
+    if (email.validity.valueMissing) {
+      emailError.textContent = "email is required :)";
+    } else if (email.validity.typeMismatch) {
+      emailError.textContent = "Enter a valid email address :)";
+    } else if (email.validity.tooShort) {
+      emailError.textContent = `email must atleast be ${email.minLength} long :)`;
+    }
+    // Set the styling appropriately
+    emailError.className = "error active";
+  };
 
 </script>
 {% endblock %}
-
