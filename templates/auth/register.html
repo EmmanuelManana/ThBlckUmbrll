@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% block content %}
 <div class="form">
   <h2>Register an account</h2>
-  <form id="form" method="POST" novalidate>
+  <form>
     <label for="Username">
       <span>Username:</span>
       <input
@@ -73,7 +73,7 @@
   const email = document.getElementById("email");
   const emailError = document.querySelector("#email + span.error");
 
-  email.addEventListener("input",  validateEmail = () => {
+  email.addEventListener("input", () => {
     // check form validity as per the users input
     if (email.validity.valid) {
       //if the email field is field correctly remove the error
@@ -84,7 +84,7 @@
       showError();
     }
   })
-  form.addEventListener("submit", submitform = () => {
+  form.addEventListener("submit", () => {
       // if the email field is valid, we let the form submit
       if (!email.validity.valid) {
         // If it isn't, we display an appropriate error message
