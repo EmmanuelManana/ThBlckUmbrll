@@ -1,0 +1,7 @@
+You should be able to run py -0 to see all the versions of Python installed (globally) on your PC. 
+Then you can run 
+> py -3.6 -m pip freeze and py -3.7 -m pip (freeze to see what modules have been installed into each Python version).
+
+Then you can run the appropriate Python interpreter, e.g. py -3.6 your_python_code.py
+
+("py", see here, is a handy utility script installed when you install Python.)
