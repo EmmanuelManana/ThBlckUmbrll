@@ -1,5 +1,6 @@
 from flask import Flask, render_template, url_for, redirect, request
-from functools import html
+from functools import wraps
+import html
 from models import Database
 
 db = Database()
@@ -15,19 +16,19 @@ def register_user():
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
-    if request.mathod == 'POST':
+    if request.method == 'POST':
         username = html.escape(request.form.get('Username'))
         firstname = html.escape(request.form.get('Firstname'))
         lastname = html.escape(request.form.get('Lastname'))
         email = html.escape(request.form.get('Email'))
-        confirm_email = html.escape(request.form.get('Confirm-email'))
+        confirm_email = html.escape(request.form.get('Cemail'))
         password = html.escape(request.form.get('Password'))
         confirm_password = html.escape(request.form.get('Confirm-pass'))
 
-        #validate input and encryot password
+        #validate input and encrypt password
 
         #add to the database
         sql_query = '''INSERT INTO USERS (Username, Firstname, Lastname, Email, Password) VALUES (?, ?, ?, ?, ?)'''
-        user_info = (username, firstname, lastname, email, password, password)
+        user_info = (username, firstname, lastname, email, password)
         db.write_query(sql_query, user_info)
     return render_template('auth/register.html')

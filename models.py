@@ -17,10 +17,10 @@ driver = 'ODBC Driver 17 for SQL Server'
 
 class Database:
 
-    def __init__(self, server, db_name, driver):
+    def __init__(self):
         self.__conn = pyodbc.connect('DRIVER={'+driver+'}; \
                             SERVER=' + server + '; \
-                            DATABASE=' + db_name + ';\
+                            DATABASE=' + database + ';\
                             Trusted_Connection=yes;')
 
     def get_connection(self):

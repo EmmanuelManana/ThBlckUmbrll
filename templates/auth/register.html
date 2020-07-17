@@ -1,52 +1,52 @@
 {% extends 'base.html' %} {% block content %}
 <div class="form">
   <h2>Register an account</h2>
-  <form>
+  <form method="POST">
     <label for="Username">
       <span>Username:</span>
-      <input type="text" name="Username" value="Username" alt="Username" required/>
+      <input type="text" name="Username" value="Emmanuel123" alt="Username" required/>
       <span class="error" aria-live="polite"></span>
     </label>
     <br />
 
     <label for="Firstname">
       <span>Firstname:</span>
-      <input type="text" name="Firstname" value="Fisrtname"alt="Fisrtname" required/>
+      <input type="text" name="Firstname" value="Emmanuel123"alt="Fisrtname" required/>
       <span class="error" aria-live="polite"></span>
     </label>
     <br />
 
     <label for="Lastname">
       <span>Lastname:</span>
-      <input type="Lastname" name="Lastname" value="Lastname" alt="LastName" />
+      <input type="Lastname" name="Lastname" value="Manana" alt="LastName" />
       <span class="error" aria-live="polite"></span>
     </label>
     <br />
 
     <label for="email">
       <span>email:</span>
-      <input type="email" id="email" name="Email" aria-multiline="6" />
+      <input type="email" id="email" name="Email" value="emanana@student.wethinkcode.co.za" aria-multiline="6" />
       <span class="error" aria-live="polite"></span>
     </label>
     <br />
 
     <label for="confirm-email">
       <span>confirm-email:</span>
-      <input type="email" id="email-confirm" name="Email-confirm" required />
+      <input type="email" id="email-confirm" name="Cemail"  value="emanana@student.wethinkcode.co.za" required />
       <span class="error" aria-live="polite"></span>
     </label>
     <br />
 
     <label for="Password">
       <span>Password:</span>
-      <input type="password" id="Password" name="Password" required />
+      <input type="password" id="Password" name="Password" value="Pass@123" required />
       <span class="error" aria-live="polite"></span>
     </label>
     <br />
 
     <label for="Password">
       <span> Confirm Password:</span>
-      <input type="password" id="Password" name="Confirm-pass" required />
+      <input type="password" id="Password" name="Confirm-pass" value="Pass@123" required />
       <span class="error" aria-live="polite"></span>
     </label>
 
