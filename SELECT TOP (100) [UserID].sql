@@ -1,0 +1,8 @@
+SELECT TOP (100) [UserID]
+      ,[Username]
+      ,[FirstName]
+      ,[LastName]
+      ,[Email]
+      ,[Password]
+      ,[LastLogin]
+  FROM [ThBlkUmbrll].[dbo].[Users]

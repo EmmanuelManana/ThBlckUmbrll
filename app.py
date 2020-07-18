@@ -33,7 +33,7 @@ def register():
         #errors array
         errors = []
         #validate input and encrypt password
-        validate.validate_username(username, errors)
+        validate.username(username, errors)
         print(errors)
             
         if not errors:
