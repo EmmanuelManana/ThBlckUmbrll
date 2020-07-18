@@ -9,12 +9,11 @@ class Validate:
             usernames.append(_username[1])
         print(usernames)
         if not re.match('^[A-Za-z][A-Za-z0-9]{2,49}$', username):
-            erros.append('The username must be an alpha numeric \
-            value beginning with a letter, 3 - 50 characters long.')
+            erros.append('The username must be an alpha numeric value beginning with a letter, 3 - 50 characters long.')
         if username in usernames:
                 erros.append("username has been taken, try a different one")
     
-    def email(self, email, erros):
+    def email(self, email, errors):
         users = utils.get_all_users(self)
         emails = []
         for _email in users:
