@@ -7,3 +7,9 @@ def register_user(username, firstname, lastname, email, password):
         sql_query = '''INSERT INTO USERS (Username, Firstname, Lastname, Email, Password) VALUES (?, ?, ?, ?, ?)'''
         user_info = (username, firstname, lastname, email, password)
         db.write_query(sql_query, user_info)
+
+
+def get_user_by_username(self, username):
+    sql_query = 'SELECT * FROM Users WHERE  Username = {})'.format(username)
+    user = dict(db.fetch_query(sql_query))
+    return user
