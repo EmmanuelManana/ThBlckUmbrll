@@ -13,7 +13,7 @@ def get_all_users(self):
         users = db.fetch_query(sql_query)
         return users #users of type list
 
-def get_user_by_username(self, username):
+def get_user(self, username):
         sql_query = 'SELECT * FROM Users WHERE  Username = {})'.format(username)
         user = db.fetch_query(sql_query)
         return user #user is of type list

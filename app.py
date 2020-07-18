@@ -34,6 +34,7 @@ def register():
         errors = []
         #validate input and encrypt password
         validate.username(username, errors)
+        validate.email(email, errors)
         print(errors)
             
         if not errors:
