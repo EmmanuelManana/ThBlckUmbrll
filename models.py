@@ -67,9 +67,6 @@ class Database:
             request = cursor.fetchall()
             return request
 
-
-
-
     # def add_user(self, details):
     #     cursor = self.conn.cursor()
     #     sql_query = '''INSERT INTO Users (Username, Password, FirstName, LastName, Email, Age)

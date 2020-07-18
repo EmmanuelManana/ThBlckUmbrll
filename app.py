@@ -1,11 +1,16 @@
-from flask import Flask, render_template, url_for, redirect, request
+from flask import Flask, render_template, url_for, redirect, request, flash
 from functools import wraps
 import html
 from models import Database
+from validate import Validate
+import utils as utils
 
+
+validate = Validate()
 db = Database()
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'kueghfo734yfo8g387'
 
 #run the setup.py upon application start
 
@@ -25,10 +30,19 @@ def register():
         password = html.escape(request.form.get('Password'))
         confirm_password = html.escape(request.form.get('Confirm-pass'))
 
+        #errors array
+        errors = []
         #validate input and encrypt password
+        validate.validate_username(username, errors)
+        print(errors)
+            
+        if not errors:
+            utils.register_user(username, firstname, lastname, email, password)
+            # return redirect(url_for('/'))
+            return render_template('home.html') # render the gome page for sake of testing
 
+        for error in errors:
+            flash(error, 'danger')
         #add to the database
-        sql_query = '''INSERT INTO USERS (Username, Firstname, Lastname, Email, Password) VALUES (?, ?, ?, ?, ?)'''
-        user_info = (username, firstname, lastname, email, password)
-        db.write_query(sql_query, user_info)
+        
     return render_template('auth/register.html')
