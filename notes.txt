@@ -5,3 +5,6 @@ Then you can run
 Then you can run the appropriate Python interpreter, e.g. py -3.6 your_python_code.py
 
 ("py", see here, is a handy utility script installed when you install Python.)
+
+____________________________________________________________________________________>
+what is it that , I/we should be asking that i/we are not asking.

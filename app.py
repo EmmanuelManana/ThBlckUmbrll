@@ -1,6 +1,6 @@
 from flask import Flask, render_template, url_for, redirect, request, flash
 from functools import wraps
-import html
+import html, secrets, bcrypt
 from models import Database
 from validate import Validate
 import utils as utils
@@ -29,16 +29,23 @@ def register():
         confirm_email = html.escape(request.form.get('Cemail'))
         password = html.escape(request.form.get('Password'))
         confirm_password = html.escape(request.form.get('Confirm-pass'))
-
-        #errors array
+        #defien an errors array
         errors = []
         #validate input and encrypt password
         validate.username(username, errors)
         validate.email(email, errors)
+        validate.password(password, confirm_password, errors)
+        validate.firstname_lastname(firstname, lastname,errors)
         print(errors)
             
         if not errors:
+            #encrypt password  and add to database.
+            salt = bcrypt.gensalt()
+            password = bcrypt.hashpw(password.encode('utf-8'), salt)
             utils.register_user(username, firstname, lastname, email, password)
+            #send verificatin mail.
+            #flask email confirmation message
+            #return 'login' page.
             # return redirect(url_for('/'))
             return render_template('home.html') # render the gome page for sake of testing
 
