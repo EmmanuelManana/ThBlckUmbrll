@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, redirect, request, flash
+from flask import Flask, render_template, url_for, redirect, request, flash, session
 from functools import wraps
 import html, secrets, bcrypt
 from models import Database
@@ -46,11 +46,30 @@ def register():
             #send verificatin mail.
             #flask email confirmation message
             #return 'login' page.
-            # return redirect(url_for('/'))
-            return render_template('home.html') # render the gome page for sake of testing
+            return redirect(url_for('login')) 
 
         for error in errors:
             flash(error, 'danger')
-        #add to the database
-        
+
     return render_template('auth/register.html')
+
+@app.route('/login', methods=['POST','GET'])
+def login():
+
+    erros= []
+    user_info = {
+        'email' : '',
+        'password' : ''
+    }
+
+    if request.method == 'POST':
+        email= html.escape(request.form.get('Email'))
+        user_info['password'] = html.escape(request.form.get('Password'))
+
+        user_info['email'] = email
+        print(email)
+
+        user = utils.get_user(email)
+        print('checking if user exist(debugg) : {}'.format(user))
+
+    return render_template('auth/login.html', user_info = user_info)

@@ -49,3 +49,10 @@ input:invalid{
   .error.active {
     padding: 0.3em;
   }
+
+  .alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    width: 500px;
+}

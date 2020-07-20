@@ -1,0 +1,11 @@
+[
+  {
+    "UserID": 1,
+    "Username": "Emmanuel123",
+    "FirstName": "Emmanuel",
+    "LastName": { "name":"Manana", "name2" :"Manana2"},
+    "Email": "emanana@student.wethinkcode.co.za",
+    "Password": "$2b$12$LOfe0pPwu8NGW9ipffbyDuqII2n6cxuVUqMRAUe/jXUtQ7DlMfQNK",
+    "LastLogin": "2020-07-19T20:40:10.12"
+  }
+]

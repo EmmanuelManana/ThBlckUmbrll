@@ -7,7 +7,6 @@ class Validate:
         usernames = []
         for _user in users:
             usernames.append(_user[1])
-        print(usernames)
         if not re.match('^[A-Za-z][A-Za-z0-9]{2,49}$', username):
             erros.append('The username must be an alpha numeric value beginning with a letter, 3 - 50 characters long.')
         if username in usernames:
@@ -18,7 +17,6 @@ class Validate:
         emails = []
         for _user in users:
             emails.append(_user[4])
-        print(emails)
         if not re.match(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,100}$', email):
             errors.append('invalid email format')
         if email in emails:

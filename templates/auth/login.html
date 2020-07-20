@@ -1,9 +1,50 @@
 {% extends 'base.html' %}
 
-{% block head %}
+{% block content %}
+<form action="" method="POST" class="needs-validation" novalidate>
+    <label for="email">
+        <span>email:</span>
+        <input type="email" id="email" name="Email" value="emanana@student.wethinkcode.co.za" aria-multiline="6" />
+        <span class="error" aria-live="polite"></span>
+      </label>
+      <br />
 
-{% endblock %}
+      <label for="Password">
+        <span>Password:</span>
+        <input type="password" id="Password" name="Password" value="Pass@123" required />
+        <span class="error" aria-live="polite"></span>
+      </label>
+      <br />
+    
+    <button type="submit" alt="Submit">Submit</button>
+</form>
 
-{% block body %}
+{% block js %}
+<script>
+      (function () {
+    "use strict";
+    window.addEventListener("load", () => {
+
+        let forms = document.getElementsByClassName("needs-validation");
+
+        let validation = Array.prototype.filter.call(forms, function (form) {
+
+          form.addEventListener("submit",  (event) => {
+
+              if (form.checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+              }
+              form.classList.add("was-validated");
+            },
+            false
+          );
+        });
+      },
+      false
+    );
+  })();
+</script>
+{% endblock js%}
 
 {% endblock %}
