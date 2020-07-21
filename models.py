@@ -1,7 +1,7 @@
 import pyodbc
 
-for driver in pyodbc.drivers():
-    print(driver)
+# for driver in pyodbc.drivers():
+#     print(driver)
 
 # define server name, drive and database name
 server = 'DESKTOP-4L29225\SQLEXPRESS'

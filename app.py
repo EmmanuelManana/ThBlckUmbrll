@@ -56,20 +56,26 @@ def register():
 @app.route('/login', methods=['POST','GET'])
 def login():
 
-    erros= []
+    errors= []
     user_info = {
         'email' : '',
         'password' : ''
     }
 
     if request.method == 'POST':
-        email= html.escape(request.form.get('Email'))
+        user_info['email'] = html.escape(request.form.get('Email'))
         user_info['password'] = html.escape(request.form.get('Password'))
 
-        user_info['email'] = email
-        print(email)
-
-        user = utils.get_user(email)
-        print('checking if user exist(debugg) : {}'.format(user))
+        users = utils.get_all_users()
+        emails = []
+        for user in users:
+            emails.append(user[4])
+        if user_info['email'] in emails:
+            print('logged in')
+            flash("you've succesfully logged in")
+        else:
+            errors.append('Unregistered/Invalid email')
+    for error in errors:
+        flash(error, 'danger')
 
     return render_template('auth/login.html', user_info = user_info)
